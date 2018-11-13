@@ -1,0 +1,32 @@
+<view id="calculator" catchtap='pressView' data-text="">
+  <view class="top" data-text="">
+    <view class="clear" id="clear" data-text="C">C</view>
+    <view class="screen" id="screen" data-text="">{{screen}}</view>
+  </view>
+
+  <view class="keys" data-text="">
+    <view id='btn7' data-text="7">7</view>
+    <view id='btn8' data-text="8">8</view>
+    <view id='btn9' data-text="9">9</view>
+    <view id='btnDel' data-text="←" class="operator">←</view>
+    <view id='btn4' data-text="4">4</view>
+    <view id='btn5' data-text="5">5</view>
+    <view id='btn6' data-text="6">6</view>
+    <view id='btnAdd' data-text="+" class="operator">＋</view>
+    <view id='btn1' data-text="1">1</view>
+    <view id='btn2' data-text="2">2</view>
+    <view id='btn3' data-text="3">3</view>
+    <view id='btnMin' data-text="-" class="operator">－</view>
+    <view id='btn0' data-text="0">0</view>
+    <view id='btnLeft' data-text="(">(</view>
+    <view id='btnRight' data-text=")">)</view>
+    <view id='btnDiv' data-text="÷" class="operator">÷</view>
+    <view id='btn00' data-text="00">00</view>
+    <view id='btnPoi' data-text=".">.</view>
+    <view id='btnEqu' data-text="=" class="eval">=</view>
+    <view id='btnX' data-text="×" class="operator">×</view>
+  </view>
+</view>
+<!-- <view class="log">
+  <text bindtap='showLog' class='showLog'>计算记录</text>
+</view> -->

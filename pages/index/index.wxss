@@ -1,0 +1,61 @@
+/**index.wxss**/
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.sayingOuter {
+  position: absolute;
+  top: 38%;
+  text-align: center;
+  width: 92px;
+  border: 3px #6588a756 solid;
+  border-radius: 3px;
+  
+}
+
+.saying{
+  color: #1f96969f
+}
+
+.usermotto {
+  margin-top: 150px;
+}
+
+.starUse {
+  float: left;
+  position: relative;
+  top: 0;
+  cursor: pointer;
+  width: 88px;
+  height: 35px;
+  background: #1db0b8;
+  border-radius: 3px;
+  box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+  margin: 0 7px 11px 0;
+  color: #00343f;
+  line-height: 36px;
+  text-align: center;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+view.starUse:active {
+  box-shadow: 0px 0px #4d9c81;
+  top: 4px;
+}
+
+

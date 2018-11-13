@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/calcuPages/calcuIndex",
+    "pages/calLog/calLog"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "迦苇计算器",
+    "navigationBarTextStyle": "black"
+  }
+}
