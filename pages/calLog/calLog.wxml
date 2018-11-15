@@ -1,0 +1,8 @@
+<view class="container log-list">
+  <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item">{{index + 1}} <!-- ▸➠➻➬➼--> ▸ {{log.val}}</text>
+  </block>
+</view>
+<view class="clearLog">
+  <view bindtap='clearLog' class='clear'>清除记录</view>
+</view>

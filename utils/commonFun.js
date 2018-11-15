@@ -21,9 +21,9 @@ function showToast(str, icon, image, time, canTouch) {
     image: image,
     duration: time,
     mask: !canTouch,
-    success: function (res) { },
-    fail: function (res) { },
-    complete: function (res) { }
+    success: function(res) {},
+    fail: function(res) {},
+    complete: function(res) {}
   })
 }
 

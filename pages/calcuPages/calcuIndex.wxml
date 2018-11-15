@@ -27,6 +27,6 @@
     <view id='btnX' data-text="×" class="operator">×</view>
   </view>
 </view>
-<!-- <view class="log">
+<view class="log">
   <text bindtap='showLog' class='showLog'>计算记录</text>
-</view> -->
+</view>

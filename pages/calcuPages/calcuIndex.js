@@ -1,10 +1,11 @@
 // pages/calcuPages/calcuIndex.js
-var CALFUN = require("../../utils/calculatorFun.js");
-var COMFUN = require("../../utils/commonFun.js");
+const CALFUN = require("../../utils/calculatorFun.js");
+const COMFUN = require("../../utils/commonFun.js");
+
 var app = getApp();
 Page({
 
-  pressView: function (e) {
+  pressView: function(e) {
     // var viewId = e.target.id;
     var viewDataSet = e.target.dataset;
     var viewText = viewDataSet.text;
@@ -40,11 +41,22 @@ Page({
         equation = equation.replace(/.$/, '');
       if (equation && !isNum) {
         COMFUN.showLog(equation);
-        var theResult = "" + CALFUN.calCommonExp(equation);  //数字转为字符串,否则为0或1，下面判断出错
+        var theResult = "" + CALFUN.calCommonExp(equation); //数字转为字符串,否则为0或1，下面判断出错
         if (theResult == "NaN" || !theResult) {
           resultText = "计算式有误";
         } else {
           resultText = theResult;
+          var tempData = (equation + " = " + theResult);
+          var calLog = wx.getStorageSync('calLog') || [];
+          if (calLog && calLog.length == 1 && calLog[0] == "暂无记录") {
+            calLog = [];
+          }
+
+          if ((calLog && calLog.length == 0) || (calLog && calLog.length > 0 && calLog[calLog.length - 1] != tempData)) {
+            calLog.unshift(tempData);
+            wx.setStorageSync('calLog', calLog);
+          }
+
         }
       }
       decimalAdded = false;
@@ -80,22 +92,29 @@ Page({
       screen: resultText
     })
   },
-  showLog: function () {
+  showLog: function() {
     wx.navigateTo({
       url: '../calLog/calLog'
     })
   },
-  onLoad: function () { },
-  onShareAppMessage: function (res) {
+  onLoad: function() {
+    var calLog = wx.getStorageSync('calLog') || [];
+    if (calLog && calLog.length == 0) {
+      calLog.unshift("暂无记录");
+      wx.setStorageSync('calLog', calLog);
+    }
+  },
+  onShareAppMessage: function(res) {
     var shareInfo = {
-      title: "迦苇计算器",
-      desc: app.globalData.SAYING2,
+      // title: "迦苇计算器",
+      // desc: app.globalData.SAYING2,
+      title: app.globalData.SAYING2,
       path: "/pages/index/index",
       imageUrl: "../../images/jwCalcu.png",
-      success: function (res) {
+      success: function(res) {
         COMFUN.showToast("转发成功", "", "../../images/success1.png", 2100, false);
       },
-      fail: function (res) {
+      fail: function(res) {
         COMFUN.showToast("转发失败", "", "../../images/fail1.png", 2100, false);
       }
     }

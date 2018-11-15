@@ -7,20 +7,20 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    tSaying:app.globalData.SAYING1
+    tSaying: app.globalData.SAYING1
   },
   //事件处理函数
-  bindViewTap: function () {
+  bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  startUse: function () {
+  startUse: function() {
     wx.navigateTo({
       url: '../calcuPages/calcuIndex'
     })
   },
-  onLoad: function () {
+  onLoad: function() {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -48,7 +48,7 @@ Page({
       })
     }
   },
-  getUserInfo: function (e) {
+  getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
@@ -56,16 +56,16 @@ Page({
       hasUserInfo: true
     })
   },
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     var shareInfo = {
-      title: "迦苇计算器",
-      desc: app.globalData.SAYING1,
+      title: app.globalData.SAYING2,
+      // desc: app.globalData.SAYING2,
       path: "/pages/index/index",
       imageUrl: "../../images/jwCalcu.png",
-      success: function (res) {
+      success: function(res) {
         COMFUN.showToast("转发成功", "", "../../images/success1.png", 2100, false);
       },
-      fail: function (res) {
+      fail: function(res) {
         COMFUN.showToast("转发失败", "", "../../images/fail1.png", 2100, false);
       }
     }
