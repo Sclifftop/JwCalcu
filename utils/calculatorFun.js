@@ -26,9 +26,10 @@ function outputRpn(exp) {
   var expIndex = 0;
   var hasM = false;
   var firstM = false;
-  var reg = /\s/g;    //空白字符
+  var reg = /\s/g; //空白字符
   var reg1 = /^[\d]+$/; //是否为数字
-  var reg2 = /\-{1}/;   //替换第一个负号
+  var reg2 = /\-{1}/; //替换第一个负号
+  var reg3 = /^[\+\-]+$/; //是否为正负号
   exp = exp.replace(reg, '');
   if (exp[0] == "-") {
     firstM = true;
@@ -52,7 +53,7 @@ function outputRpn(exp) {
       inputStack.push(exp[i]);
     }
   }
-  COMFUN.showLog(inputStack);
+  COMFUN.showLog("55：" + inputStack);
   if (hasM && inputStack[expIndex - 1]) {
     if (reg1.test(inputStack[expIndex - 1])) {
       inputStack[expIndex - 1] = -inputStack[expIndex - 1];
@@ -63,12 +64,19 @@ function outputRpn(exp) {
       i = judgeSym(inputStack, i);
       if (reg1.test(inputStack[i])) {
         inputStack[i] = -inputStack[i];
+      } else if (inputStack[i] == "+") {
+        inputStack[i] = "-";
+      } else if (inputStack[i] == "-") {
+        inputStack[i] = "+";
       }
+      /* else if (reg3.test(inputStack[i])) {
+              COMFUN.showLog("68：" + inputStack[i])
+            }*/
       if (inputStack[i + 1] == ")")
         break;
     }
   }
-  COMFUN.showLog(inputStack)
+  COMFUN.showLog("71：" + inputStack)
   while (inputStack.length > 0) {
     var cur = inputStack.shift();
     if (isOperator(cur)) {
@@ -95,7 +103,7 @@ function outputRpn(exp) {
       outputQueue.push(outputStack.pop());
     }
   }
-  COMFUN.showLog(outputQueue);
+  COMFUN.showLog("98：" + outputQueue);
   return outputQueue;
 }
 
@@ -108,6 +116,7 @@ function judgeSym(inputStack, i) {
     return i;
   }
 }
+
 function calRpnExp(rpnArr) {
   var stack = [];
   for (var i = 0, max = rpnArr.length; i < max; i++) {

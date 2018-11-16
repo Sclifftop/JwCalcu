@@ -15,7 +15,7 @@ page{
 }
 
 .clear {
-  position: absolute;
+  position: fixed;
   top: 90%;
   left:2%;
   cursor: pointer;
